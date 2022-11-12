@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  <head>
+        <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+      <title>Contact</title>
+      <meta name="csrf_token" content="{{ csrf_token }}">
+
+      {% include 'children/head.html' %}
+
+  </head>
+
+
+  <body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <div class="cursor-outer d-none d-md-block"></div>
+
+        {% include 'children/nav.html' %}
+
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="py-4" id="contact">
+
+        <div class="container px-md-5">
+          <div class="row align-items-center">
+            <div class="my-4 text-center">
+              <h1 class="text-uppercase fs-lg-8 fs-6 fw-bolder text-300 lh-1 position-relative z-index-0">Contacto</h1>
+              <h1 class="fw-bolder text-outlined fs-7 text-white lh-1 mt-n4 position-relative z-index--1">Ponte en contacto</h1>
+
+              <form class="my-5 px-3" method="POST" action="{% url 'create_a_contact' %}" enctype="multipart/form-data">
+
+                  {% csrf_token %}
+                    <h1>{{ ms }}</h1>
+                  <div class="row g-3 g-md-5">
+                  <div class="col-md-6">
+                    <div class="card border-0">
+                      <div class="form-floating mb-3">
+                        <input class="form-control form-fotogency-header-control" id="email" name="email" type="email" placeholder="name@example.com" required/>
+                        <label for="floatingEmail">Email</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input class="form-control form-fotogency-header-control" id="nombre" name="nombre" type="text" placeholder="name" required />
+                        <label for="floatingName">Tu nombre</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input class="form-control form-fotogency-header-control" id="numero" name="numero" type="tel" required/>
+                        <label for="floatingPhone">Número telefónico</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input class="form-control form-fotogency-header-control" id="asunto" name="asunto" type="text" required/>
+                        <label for="floatingLocation">Asunto</label>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card border-0">
+                      <input class="form-control opacity-0 pb-0 pe-none d-none d-md-block" />
+                      <div class="form-floating mb-3">
+                        <textarea class="form-control form-fotogency-header-control border ps-2 form-fotogency-header-control" id="comentario" name="comentario" style="height: 210px" placeholder="Leave a comment here" required></textarea>
+                        <label class="ps-2" for="mensaje">Mensaje</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input class="form-control form-fotogency-header-control" id="manera" name="manera" type="text" placeholder="How did you hear about us?" required />
+                        <label for="manera">¿Cómo te enteraste de nosotros?</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 text-end mt-3">
+                    <button class="btn btn-link text-warning p-0" type="submit"><span class="fw-bolder text-uppercase">Enviar</span><img class="ms-3" src="{% static 'assets/img/icons/long-arrow.png' %}" alt="" /></button>
+                  </div>
+                </div>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+   {% include 'children/footer.html' %}
+
+  </body>
+
+</html>

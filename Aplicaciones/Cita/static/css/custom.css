@@ -1,0 +1,39 @@
+.scroll-indicator > span{
+    color: #F535aa;
+}
+.d-flex > a{
+    color: #F535aa !important;
+}
+html > body{
+    background-color: black;
+}
+.position-absolute > h1{
+    color: black !important;
+}
+#nav-active > li >.nav-link.active{
+    color: white !important;
+}
+#studio-title1{
+    color: white !important;
+}
+#studio-title2{
+    color: black !important;
+}
+.col-8 > #titulo-resize{
+    display: block !important;
+}
+.mt-4 > .z-index--1{
+    display: block !important;
+}
+@media (max-width: 720px){
+
+    #espaciado > br{
+        display: none;
+    }
+}
+#CopyInfo{
+    background-color: #F535aa !important;
+}
+.nav-item > .active{
+    color: white !important;
+}

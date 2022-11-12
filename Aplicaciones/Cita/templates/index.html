@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+  <head>
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>PIINK | Tattoo Studio</title>
+
+    {% include 'children/head.html' %}
+
+  </head>
+
+
+  <body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <div class="cursor-outer d-none d-md-block"></div>
+
+        {% include 'children/nav.html' %}
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="py-4 pt-md-0 pb-8 pb-sm-11 mt-lg-n8">
+
+        <div class="container px-md-5">
+          <div class="row">
+            <div class="col-md-9 col-lg-7">
+              <div  id="espaciado"><br><br><br><br><br><br><br></div>
+            </div>
+          </div>
+          <div class="row mt-md-n6">
+            <div class="col-2 d-none d-lg-block mt-auto"><img class="img-fluid" src="{%static 'assets/img/home/img2-2.png' %}" alt="" /></div>
+            <div class="col-1 mt-auto d-none d-lg-block"><a class="scroll-indicator text-warning" href="#footer"> <span>SCROLL </span><img src=" {% static 'assets/img/icons/long-arrow.png' %}" alt="" /></a></div>
+            <div class="col-lg-7 position-relative">
+              <div class="position-relative overflow-hidden overflow-md-visible"><img class="img-fluid" src=" {% static 'assets/img/home/img1-2.png' %}" alt="" />
+                <div class="img-circle p-5 p-md-7 rounded-circle"></div>
+                <div class="img-circle-2 p-5 p-md-7 rounded-circle"></div>
+              </div>
+              <div class="position-absolute bottom-n100 col-11 mt-6 d-none d-md-block">
+                <p class="fs-2 lh-1 text-400">Poly, artista del tatuaje.</p>
+                <p class="text-300">Soy una tatuadora proveniente de Guadalajara Jalisco, Mexico.<br>
+                Echale un vistazo a mi trabajo en instagram <a href="https://www.instagram.com/piinktatu/" target="_blank">@piinktatu</a></p>
+              </div>
+              <div class="position-absolute start-0 bottom-0 d-lg-none"><a class="scroll-indicator text-warning" href="#footer"> <span>SCROLL </span><img src="{% static 'assets/img/icons/long-arrow.png' %}" alt="" /></a></div>
+            </div>
+            <div class="col-2 d-none d-lg-block mb-auto"><img class="img-fluid" src="{% static 'assets/img/home/img3-2.png' %}" alt="" /></div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+    {% include 'children/footer.html' %}
+
+
+  </body>
+
+</html>

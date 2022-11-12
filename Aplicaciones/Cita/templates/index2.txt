@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+</head>
+
+<body>
+    <h1>Citas arregladas</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id de cita</th>
+                <th>Fecha y hora</th>
+                <th>Nombre del cliente</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Descripcion</th>
+                <th>Tamaño</th>
+                <th colspan="2">Opciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for each in cita %}
+                <tr>
+                    <td>{{ each.id_cita }}</td>
+                    <td>{{ each.fecha_hora }}</td>
+                    <td>{{ each.nombre_cliente }}</td>
+                    <td>{{ each.correo }}</td>
+                    <td>{{ each.telefono }}</td>
+                    <td>{{ each.descripcion }}</td>
+                    <td>{{ each.tamanio }}</td>
+                    <td><a href="eliminarCita/{{ each.id_cita }}">Eliminar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <form method="POST" action="/registrarCita/"> {% csrf_token %}
+
+        <label for="nombre_cliente">Nombre: <input id="nombre_cliente" name="nombre_cliente" type="text" maxlength="100"> </label> <br>
+        <label for="telefono"> Telefono: <input id="telefono" name="telefono" type="text" maxlength="10"></label> <br>
+        <label for="correo">Correo: <input id="correo" name="correo" type="email" maxlength="30" required></label> <br>
+
+        <label for="tamanio">Tamaño:
+            <select id="tamanio" name="tamanio">
+                <option value="1">Chico (0-10 cm)</option>
+                <option value="2">Mediano (10-40 cm)</option>
+                <option value="3">Chico (40+ cm)</option>
+            </select>
+        </label> <br>
+
+        <label for="fecha_hora">Escoja fecha y hora de la cita:
+            <input id="fecha_hora" name="fecha_hora" type="datetime-local" value="2022-10-11T00:00"  min="2022-10-11T00:00" max="2023-10-11T00:00">
+        </label> <br><br><br>
+
+        <label for="descripcion">Descripcion <br><br>
+            <textarea id="descripcion" name="descripcion" placeholder="Escriba aqui...." rows="8" cols="50" ></textarea>
+        </label> <br>
+
+        <input id="boton_enviar" name="enviar" type="submit" value="ENVIAR">
+
+    </form>
+</body>
+</html>
