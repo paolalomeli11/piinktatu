@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuarios</title>
+    {% include 'children/head.html' %}
+</head>
+<body>
+
+    <h1 style="color:white;">Usuarios</h1>
+    <a class="btn btn-success" href="{% url 'agregarUser' %}">Agregar usuario</a>
+
+    <br><br>
+    {% for each in usuarios %}
+        <div class="container">
+            <div class="card">
+                  <h5 class="card-header">Id de usuario: <strong>{{ each.id_usuario }}</strong></h5>
+
+                <div class="card-body">
+                    <h5 class="card-title">Usuario: <strong>{{ each.usuario }}</strong> </h5>
+                    <h5 class="card-title">Contraseña: <strong>{{ each.contrasenia }}</strong> </h5>
+
+                    <a class="btn btn-primary btn-danger" href="{% url 'delete_usuario' each.id_usuario %}">Eliminar</a>
+                     <a class="btn btn-primary btn-warning" href="{% url 'edit_page' each.id_usuario %}">Editar</a>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+    {% endfor %}
+
+      <a class="btn btn-primary btn-secondary" href="{% url 'login_acceso' %}">Salir</a>
+
+
+{% include 'children/footer.html' %}
+
+
+</body>
+</html>

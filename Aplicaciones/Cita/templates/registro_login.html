@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+    <form method="POST" action="{% url 'login' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label for="usuario">Usuario:</label>
+        <input name="usuario" id="usuario" type="text" maxlength="20" required>
+
+        <label for="contrasenia">Contraseña</label>
+        <input name="contrasenia" id="contrasenia" type="password" maxlength="15" required>
+
+        <button type="submit" >Enviar</button>
+    </form>
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar usuario</title>
+    {% include 'children/head.html' %}
+</head>
+<body>
+ <a class="btn-danger btn-lg" href="{% url  'usuarios' %}">Regresar</a>
+    <center>
+    <h1 style="color:white;">Editar Usuario</h1>
+
+        <br><br>
+    <p style="color:white;">Id acutual de usuario: <strong style="color:yellow;"> {{ usuario.id_usuario }} </strong></p>
+    <p style="color:white;">Nombre de usuario actual: <strong style="color:yellow;"> {{ usuario.usuario }} </strong></p>
+    <p style="color:white;">Contraseña actual: <strong style="color:yellow;"> {{ usuario.contrasenia }} </strong></p>
+
+      <form method="POST"  action="{% url 'editUser' usuario.id_usuario  %}" enctype="multipart/form-data">
+        {% csrf_token %}
+         <hr>
+          <br><br>
+
+        <label style="color:white;" for="usuario">Nuevo Usuario:</label>
+        <input name="usuario" id="usuario" type="text" maxlength="20" required>
+        <br><br>
+
+        <label style="color:white;" for="contrasenia">Nueva Contraseña:</label>
+        <input name="contrasenia" id="contrasenia" type="password" maxlength="15" required>
+
+          <br><br>
+       <button type="submit" class="btn-success btn-lg">Editar</button>
+
+    </form>
+
+        </center>
+
+
+
+{% include 'children/footer.html' %}
+
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from Aplicaciones.Cita.models import Contacto
+from Aplicaciones.Cita.models import Contacto, Usuario
 
 
 # Create your views here.
@@ -46,30 +46,75 @@ def create_a_contact(request):
     return redirect('contact.html')
 
 
-# mio
-#
-# def index(request):
-#     cita = Cita.objects.all()
-#     return render(request, "index2.txt", context={'cita': cita})
-#
-#
-# def registrarCita(request):
-#     nombre_cliente = request.POST["nombre_cliente"]
-#     telefono = request.POST["telefono"]
-#     correo = request.POST["correo"]
-#     tamanio = request.POST["tamanio"]
-#     fecha_hora = request.POST["fecha_hora"]
-#     descripcion = request.POST["descripcion"]
-#
-#     cita = Cita.objects.create(nombre_cliente=nombre_cliente,
-#                                telefono=telefono, correo=correo,
-#                                tamanio=tamanio, fecha_hora=fecha_hora,
-#                                descripcion=descripcion)
-#     return redirect('/')
-#
-#
-# def eliminarCita(request, id_cita):
-#     cita = Cita.objects.get(id_cita=id_cita)
-#     cita.delete()
-#
-#     return redirect('/')
+def login_registro(request):
+    if request.method == 'POST' and request.POST:
+        usuario = Usuario.objects.create(usuario=request.POST.get("usuario"),
+                                         contrasenia=request.POST.get("contrasenia"))
+
+    return render(request, 'registro_login.html')
+
+
+def usuarios(request):
+    usuario = Usuario.objects.all()
+    return render(request, "usuarios.html", context={'usuarios': usuario})
+
+
+def eliminarUsuario(request, id_usuario):
+    Usuario.objects.get(id_usuario=id_usuario).delete()
+    return redirect('usuarios')
+
+
+def edit_page(request, id_usuario):
+    usuario = Usuario.objects.get(id_usuario=id_usuario)
+    return render(request, 'editar.html', {'usuario': usuario})
+
+
+def editUser(request, id_usuario):
+    if request.method == 'POST' and request.POST:
+        usuario = request.POST['usuario']
+        contrasenia = request.POST['contrasenia']
+
+        user = Usuario.objects.get(id_usuario=id_usuario)
+
+        user.usuario = usuario
+        user.contrasenia = contrasenia
+
+        user.save()
+
+        return redirect('usuarios')
+
+    return redirect('usuarios')
+
+
+def login(request):
+    return render(request, 'login.html')
+
+
+def acceder(request):
+    if request.method == 'POST' and request.POST:
+        usuario = request.POST.get('usuario')
+        contrasenia = request.POST.get('contrasenia')
+
+        usuario_db = Usuario.objects.get(usuario=usuario, contrasenia=contrasenia)
+
+        if usuario_db.usuario == usuario and usuario_db.contrasenia == contrasenia:
+            return render(request, 'usuarios.html', context={'usuarios': Usuario.objects.all()})
+
+    return redirect('login')
+
+
+def agregarUsuario_page(request):
+    return render(request, 'agregar.html')
+
+
+def agregarUsuario(request):
+    if request.method == 'POST' and request.POST:
+        usuario = request.POST.get("usuario")
+        contrasenia = request.POST.get("contrasenia")
+
+        usuario_clase = Usuario.objects.create(usuario=usuario, contrasenia=contrasenia)
+        context = Usuario.objects.all()
+
+        return render(request, 'usuarios.html', {'usuarios': context})
+
+    return redirect('usuarios.html')

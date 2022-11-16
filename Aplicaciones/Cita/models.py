@@ -12,6 +12,11 @@ class Contacto(models.Model):
     manera = models.TextField(max_length=250, null=True)
 
 
+class Usuario(models.Model):
+    id_usuario = models.AutoField(primary_key=True, null=False)
+    usuario = models.CharField(max_length=20, null=False, unique=True)
+    contrasenia = models.CharField(max_length=15, null=False, unique=True)
+
 # tamanio_tattoos = [
 #     (1, 'Chico (0-10 cm)'),
 #     (2, 'Mediano (10-40 cm'),

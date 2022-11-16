@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar usuario</title>
+    {% include 'children/head.html' %}
+</head>
+
+<body>
+    <a class="btn-danger btn-lg" href="{% url  'usuarios' %}">Regresar</a>
+
+    <center>
+    <h1 style="color:white;">Agregar Usuario</h1>
+
+
+    <form method="POST"  action="{% url 'agregarUserRegistro' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+         <hr>
+          <br><br>
+
+        <label style="color:white;" for="usuario"> Usuario:</label>
+        <input name="usuario" id="usuario" type="text" maxlength="20" required>
+        <br><br>
+
+        <label style="color:white;" for="contrasenia">Contraseña:</label>
+        <input name="contrasenia" id="contrasenia" type="password" maxlength="15" required>
+
+          <br><br>
+       <button type="submit" class="btn-success btn-lg">Agregar</button>
+
+    </form>
+
+    </center>
+
+{% include 'children/footer.html' %}
+
+</body>
+</html>
+
